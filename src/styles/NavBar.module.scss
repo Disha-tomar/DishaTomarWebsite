@@ -1,0 +1,38 @@
+@import "../variables/Variables.scss";
+
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $color-background-blue;
+  padding: 3rem;
+  height: 8rem;
+  z-index: 1;
+  padding-left: 6rem;
+
+  &__links {
+    // background-color: black;
+
+    display: block;
+    // position: absolute;
+    // float: left;
+    // left: 9rem;
+    button {
+      color: black;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: $font-montserrat;
+      font-size: 1.6rem;
+      &:not(:last-child) {
+        padding-right: 4rem;
+      }
+
+      &:hover {
+        color: $color-orange-light;
+        // text-decoration: underline;
+      }
+    }
+  }
+}

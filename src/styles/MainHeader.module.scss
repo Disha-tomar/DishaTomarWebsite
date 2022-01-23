@@ -1,0 +1,145 @@
+@import "../variables/Variables.scss";
+
+.header {
+  margin-top: 7rem;
+  position: relative;
+  height: 99vh;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    $color-background-blue,
+    #fffaf1,
+    $color-background-pink
+  );
+
+  &-container {
+    // height: 10rem;
+    // background-color: blueviolet;
+    padding-top: 8rem;
+
+    h1 {
+      font-family: "Sacramento", cursive;
+      font-size: 9rem;
+      text-align: center;
+      animation-name: MoveDown;
+      animation-duration: 0.5s;
+
+      animation-fill-mode: backwards;
+      //   color: $color-orange-dark;
+    }
+
+    &-heading--secondary {
+      display: inline-block;
+      position: relative;
+      left: 50%;
+
+      h2 {
+        font-family: $font-montserrat;
+        font-size: 3rem;
+        // text-align: center;
+
+        overflow: hidden;
+        border-right: 0.15em solid orange;
+        white-space: nowrap;
+        animation: typing 1.5s steps(20, end) forwards;
+
+        width: 0;
+        // background-color: blue;
+
+        transform: translateX(-50%);
+        // right: 50%;
+      }
+
+      //   color: $color-orange-light;
+    }
+
+    &-image {
+      //   position: absolute;
+
+      &--1 {
+        position: absolute;
+        top: 2%;
+        height: 15%;
+        right: 10%;
+        animation-name: MoveRight;
+        animation-fill-mode: backwards;
+        animation-delay: 0.5s;
+        animation-duration: 2s;
+      }
+
+      &--2 {
+        position: absolute;
+        height: 18%;
+        left: 10%;
+        bottom: 40%;
+        animation-name: MoveLeft;
+        // animation-delay: 1s;
+        animation-duration: 3.5s;
+      }
+    }
+
+    &-city {
+      position: absolute;
+      //   background-color: blue;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &--1 {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes MoveRight {
+  0% {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    transform: translateX(-5rem) translateY(5rem);
+  }
+
+  100% {
+    display: block;
+
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes MoveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(5rem) translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes MoveDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  //   80% {
+  //     opacity: 1;
+  //     transform: translateY(1rem);
+  //   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
