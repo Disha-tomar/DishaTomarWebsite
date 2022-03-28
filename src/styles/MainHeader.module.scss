@@ -1,26 +1,28 @@
 @import "../variables/Variables.scss";
 
 .header {
-  margin-top: 7rem;
+  margin-top: 0rem;
   position: relative;
-  height: 99vh;
+  height: 95vh;
   width: 100%;
   background-image: linear-gradient(
     to bottom,
     $color-background-blue,
-    #fffaf1,
+    #ffecc8,
     $color-background-pink
   );
+  // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &-container {
     // height: 10rem;
     // background-color: blueviolet;
-    padding-top: 8rem;
+    padding-top: 15rem;
 
     h1 {
       font-family: "Sacramento", cursive;
-      font-size: 9rem;
+      font-size: 12rem;
       text-align: center;
+      // color: rgb(255, 94, 0);
       animation-name: MoveDown;
       animation-duration: 0.5s;
 
@@ -32,23 +34,78 @@
       display: inline-block;
       position: relative;
       left: 50%;
+      font-family: $font-montserrat;
+      font-size: 4rem;
+      //   background-color: blue;
 
-      h2 {
-        font-family: $font-montserrat;
-        font-size: 3rem;
-        // text-align: center;
-
+      &--1 {
+        // position: absolute;
         overflow: hidden;
         border-right: 0.15em solid orange;
         white-space: nowrap;
-        animation: typing 1.5s steps(20, end) forwards;
+        width: 0;
+
+        animation-name: typing;
+        animation-duration: 2s;
+        animation-timing-function: steps(20, end);
+        animation-fill-mode: forwards;
+
+        transform: translateX(-50%);
+      }
+
+      &--2 {
+        // position: absolute;
+        // background-color: yellow;
+        margin-top: -3rem;
+
+        overflow: hidden;
+        // border-right: 0.15em solid orange;
+        white-space: nowrap;
+        // animation: typing 1.5s steps(20, end) forwards;
+
+        width: 0;
+        // background-color: blue;
+
+        animation-name: typing;
+        animation-duration: 2s;
+        animation-timing-function: steps(20, end);
+        animation-fill-mode: forwards;
+        animation-delay: 2.1s;
+
+        transform: translateX(-50%);
+      }
+
+      &--3 {
+        // position: absolute;
+        // background-color: pink;
+        margin-top: -3rem;
+        overflow: hidden;
+
+        white-space: nowrap;
+        animation-name: typingLast;
+        animation-duration: 1.5s;
+        animation-timing-function: steps(20, end);
+        animation-fill-mode: forwards;
+        animation-delay: 4.2s;
 
         width: 0;
         // background-color: blue;
 
         transform: translateX(-50%);
-        // right: 50%;
       }
+
+      // text-align: center;
+
+      // overflow: hidden;
+      // border-right: 0.15em solid orange;
+      // white-space: nowrap;
+      // animation: typing 1.5s steps(20, end) forwards;
+
+      // width: 0;
+      // // background-color: blue;
+
+      // transform: translateX(-50%);
+      // // right: 50%;
 
       //   color: $color-orange-light;
     }
@@ -58,9 +115,9 @@
 
       &--1 {
         position: absolute;
-        top: 2%;
-        height: 15%;
-        right: 10%;
+        top: 5%;
+        height: 20%;
+        right: 20%;
         animation-name: MoveRight;
         animation-fill-mode: backwards;
         animation-delay: 0.5s;
@@ -69,8 +126,8 @@
 
       &--2 {
         position: absolute;
-        height: 18%;
-        left: 10%;
+        height: 25%;
+        left: 13%;
         bottom: 40%;
         animation-name: MoveLeft;
         // animation-delay: 1s;
@@ -97,25 +154,25 @@
     opacity: 0;
     display: none;
     visibility: hidden;
-    transform: translateX(-5rem) translateY(5rem);
+    transform: translateX(-5rem) translateY(5rem) scale(1.5);
   }
 
   100% {
     display: block;
 
     opacity: 1;
-    transform: translate(0);
+    transform: translate(0) scale(1);
   }
 }
 @keyframes MoveLeft {
   0% {
     opacity: 0;
-    transform: translateX(5rem) translateY(5rem);
+    transform: translateX(5rem) translateY(5rem) scale(1.5);
   }
 
   100% {
     opacity: 1;
-    transform: translate(0);
+    transform: translate(0) scale(1);
   }
 }
 
@@ -136,10 +193,36 @@
 }
 
 @keyframes typing {
-  from {
+  0% {
     width: 0;
+    border-right: 0.15em solid orange;
   }
-  to {
+  80% {
     width: 100%;
   }
+  90% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    border-right: none;
+  }
+}
+
+@keyframes typingLast {
+  0% {
+    border-right: 0.15em solid orange;
+    width: 0;
+  }
+  100% {
+    border-right: 0.15em solid orange;
+    width: 100%;
+  }
+}
+
+.btn-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }

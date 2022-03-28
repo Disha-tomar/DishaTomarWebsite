@@ -1,6 +1,7 @@
 import Layout from "./components/Layout/Layout";
 import MainHeader from "./components/Layout/MainHeader";
 import NavBar from "./components/Layout/NavBar";
+import AboutMe from "./components/Layout/AboutMe";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Layout>
         <NavBar />
         <MainHeader />
+        <AboutMe />
       </Layout>
     </div>
   );

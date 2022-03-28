@@ -7,7 +7,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 // import AppBar from "@mui/material/AppBar";
-// import Toolbar from "@mui/material/Toolbar";
+import Toolbar from "@mui/material/Toolbar";
 // import Typography from "@mui/material/Typography";
 // import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -69,20 +69,18 @@ export default function Layout(props) {
   return (
     <React.Fragment>
       {/* <CssBaseline /> */}
-      {/* <AppBar>
-        {" "}
-        Home */}
+      {/* <AppBar> */}{" "}
       {/* <Toolbar>
           <Typography variant="h6" component="div">
             Scroll to see button
           </Typography>
         </Toolbar> */}
-      {/* </AppBar>
-      <Toolbar id="back-to-top-anchor" /> */}
+      {/* </AppBar> */}
+      <Toolbar id="back-to-top-anchor" />
       <div>
         {" "}
         {props.children}
-        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+        {/* Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
         consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
         scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet
@@ -95,7 +93,49 @@ export default function Layout(props) {
         nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
         risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-        cursus magna, vel scelerisque nisl consectetur et.
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. Cras mattis
+        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+        cursus magna, vel scelerisque nisl consectetur et. */}
         {/* <Box sx={{ my: 2 }}>
           {[...new Array(12)]
             .map(

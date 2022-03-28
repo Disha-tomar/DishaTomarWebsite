@@ -1,0 +1,121 @@
+@import "../variables/Variables.scss";
+
+.section {
+  &-about {
+    height: 90vh;
+  }
+
+  &-container {
+    position: relative;
+    margin: 10rem;
+    padding-top: 5rem;
+    border-radius: 2rem;
+
+    background-color: $color-background-pink;
+
+    // background-image: linear-gradient(
+    //   to top,
+    //   $color-background-blue,
+    //   #ffecc8,
+    //   $color-background-pink
+    // );
+  }
+
+  &-pic {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-heading-primary {
+    font-size: 4rem;
+    font-family: $font-montserrat;
+    text-align: center;
+    padding: 3rem 0;
+  }
+  &-description {
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-family: $font-montserrat;
+    text-align: center;
+    padding: 0rem 11rem;
+    line-height: 3rem;
+    // padding-bottom: 6rem;
+    // border-bottom: dotted;
+    // border-width: 0.5rem;
+  }
+  &-heading-secondary {
+    margin-top: 10rem;
+    // border-top: solid;
+    // border-width: 1rem;
+    // border-color: $color-background-blue;
+
+    font-size: 3rem;
+    font-family: $font-montserrat;
+    text-align: center;
+    padding: 3rem 0;
+  }
+  &-skills {
+    display: flex;
+    padding: 2rem 10rem;
+    // padding-left: 10rem;
+    // padding-right: 10rem;
+    align-items: center;
+    justify-content: space-around;
+    // background-color: yellow;
+    flex-wrap: wrap;
+    // height: 20rem;
+
+    &-image {
+      width: 8rem;
+
+      &:first-child {
+        animation: rotate 5s infinite linear;
+      }
+
+      &:hover {
+      }
+    }
+
+    &-image-7 {
+      width: 6rem;
+      animation: halfRotate 1.5s;
+    }
+  }
+
+  &-btn {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  // 50% {
+  //   transform: rotate(180deg);
+  // }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes halfRotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(160deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
