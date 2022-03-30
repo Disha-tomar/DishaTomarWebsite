@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import Button from "../UI/Button";
 
 import classes from "../../styles/AboutMe.module.scss";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Disha from "../../images/disha.JPG";
 
 import ReactIcon from "../../images/react.png";
@@ -13,6 +17,14 @@ import FirebaseIcon from "../../images/firebase.png";
 import PhotoshopIcon from "../../images/photoshop.png";
 
 const AboutMe = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: "ease",
+      once: true,
+    });
+  });
+
   return (
     <section className={classes["section-about"]}>
       <div className={classes["section-container"]}>
@@ -41,11 +53,13 @@ const AboutMe = () => {
             src={ReactIcon}
             alt="reactIcon"
           ></img>
+
           <img
             className={classes["section-skills-image"]}
             src={ReduxIcon}
             alt="reduxIcon"
           ></img>
+
           <img
             className={classes["section-skills-image"]}
             src={JavascriptIcon}

@@ -148,7 +148,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
         </Box> */}
       </div>
       <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab color="secondary" size="medium" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

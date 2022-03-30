@@ -1,0 +1,36 @@
+@import "../variables/Variables.scss";
+
+.section {
+  &-container {
+    margin-top: 3.5rem;
+    padding-bottom: 2rem;
+    background-image: linear-gradient(
+      to top,
+      rgba(249, 231, 148, 1) 5.533854166666667%,
+      rgba(246, 190, 212, 1) 96.67968749999999%
+    );
+  }
+
+  &-heading-primary {
+    font-size: 8rem;
+    font-stretch: expanded;
+    font-family: $font-sacramento;
+    text-align: center;
+    padding: 5rem 0;
+    color: $color-orange-dark;
+    transition: all 0.5s cubic-bezier(0.62, -0.39, 0.29, 1.29);
+    &:hover {
+      color: $color-orange-light;
+      transform: scale(1.2);
+    }
+  }
+
+  &-project {
+    // background-color: yellow;
+
+    &-item {
+      // background-color: red;
+      height: 20%;
+    }
+  }
+}

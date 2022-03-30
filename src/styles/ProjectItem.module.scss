@@ -1,0 +1,91 @@
+@import "../variables/Variables.scss";
+
+.project {
+  &-item {
+    height: 35rem;
+    display: flex;
+
+    margin-left: 15rem;
+    margin-right: 15rem;
+
+    margin-bottom: 9rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    // &:nth-of-type(2n) {
+    //   color: yellow;
+    //   background-color: lightslategrey;
+    // }
+  }
+
+  &-image {
+    height: 35rem;
+    padding: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.08);
+      z-index: 1;
+    }
+  }
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    overflow: hidden;
+    background-color: white;
+    opacity: 0.7;
+    font-family: $font-montserrat;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+
+    &-tech {
+      &-container {
+        display: flex;
+      }
+
+      &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 4rem;
+      }
+      &-caption {
+        font-size: 1.25rem;
+        padding-bottom: 0.5rem;
+      }
+      &-image {
+        height: 3.75rem;
+      }
+    }
+
+    &-heading {
+      &-primary {
+        font-size: 3rem;
+        margin-bottom: 0.3rem;
+      }
+      &-secondary {
+        font-size: 1.75rem;
+        padding-bottom: 1.5rem;
+        color: $color-orange-light;
+      }
+
+      &-tertiary {
+        font-size: 1.25rem;
+
+        text-decoration: none;
+      }
+    }
+
+    &-description {
+      padding-top: 2rem;
+      padding-bottom: 2.5rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+}

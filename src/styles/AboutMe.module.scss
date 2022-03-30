@@ -2,16 +2,19 @@
 
 .section {
   &-about {
-    height: 90vh;
+    // height: 100vh;
   }
 
   &-container {
     position: relative;
     margin: 10rem;
-    padding-top: 5rem;
+    padding: 4rem 0;
+
     border-radius: 2rem;
 
     background-color: $color-background-pink;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
     // background-image: linear-gradient(
     //   to top,
