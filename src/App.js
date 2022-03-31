@@ -3,6 +3,7 @@ import MainHeader from "./components/Layout/MainHeader";
 import NavBar from "./components/Layout/NavBar";
 import AboutMe from "./components/Layout/AboutMe";
 import ProjectList from "./components/Layout/ProjectList";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <Layout>
         <NavBar />
         <MainHeader />
+
         <AboutMe />
+
         <ProjectList />
       </Layout>
     </div>

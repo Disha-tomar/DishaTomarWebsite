@@ -26,7 +26,7 @@ const AboutMe = () => {
   });
 
   return (
-    <section className={classes["section-about"]}>
+    <section id="about" className={classes["section-about"]}>
       <div className={classes["section-container"]}>
         <img className={classes["section-pic"]} src={Disha} alt="disha"></img>
         <h3 className={classes["section-heading-primary"]}>Hello!</h3>

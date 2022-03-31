@@ -14,22 +14,29 @@
   &__links {
     // background-color: black;
 
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+
     // position: absolute;
     // float: left;
     // left: 9rem;
     button {
       color: black;
       background-color: transparent;
+      padding-right: 4rem;
       border: none;
       cursor: pointer;
       font-family: $font-montserrat;
       font-size: 1.6rem;
       &:not(:last-child) {
-        padding-right: 4rem;
+        padding-right: 10rem;
       }
+      transition: all 0.2s;
 
-      &:hover {
+      &:hover,
+      &:active {
+        transform: translateY(-0.2rem) scale(1.1);
+
         color: $color-orange-light;
         // text-decoration: underline;
       }
