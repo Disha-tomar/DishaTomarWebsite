@@ -1,6 +1,8 @@
 import classes from "../../styles/MainHeader.module.scss";
 import HotAirBalloon from "../../images/baloon.gif";
 import Button from "../UI/Button";
+import { Link } from "react-scroll";
+import Background from "../../images/Live-Wave-Background/Live-Wave-Background.svg";
 // import city from "../../images/cityscape.png";
 // import city_1 from "../../images/city_1.gif";
 
@@ -44,7 +46,9 @@ const MainHeader = () => {
         </div> */}
       </div>
       <div className={classes["btn-container"]}>
-        <Button>Know more about me</Button>
+        <Link to="about" spy={true} smooth={true}>
+          <Button>Know more about me</Button>
+        </Link>
       </div>
     </header>
   );

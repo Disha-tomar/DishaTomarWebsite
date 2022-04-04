@@ -13,6 +13,13 @@
     border-radius: 2rem;
 
     background-color: $color-background-pink;
+
+    background-image: linear-gradient(
+      to bottom,
+      rgb(255, 251, 239) 5.533854166666667%,
+      rgb(255, 230, 209) 96.67968749999999%
+    );
+
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
@@ -65,20 +72,35 @@
     padding: 2rem 10rem;
     // padding-left: 10rem;
     // padding-right: 10rem;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-around;
     // background-color: yellow;
     flex-wrap: wrap;
     // height: 20rem;
 
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-caption {
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      font-family: $font-montserrat;
+    }
+
     &-image {
       width: 8rem;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
       &:first-child {
         animation: rotate 5s infinite linear;
       }
 
       &:hover {
+        transform: scale(1.2);
       }
     }
 

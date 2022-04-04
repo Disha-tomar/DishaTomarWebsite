@@ -57,8 +57,10 @@ const ProjectList = () => {
     },
   ];
   return (
-    <section id="projects" className={classes["section-container"]}>
-      <h2 className={classes["section-heading-primary"]}>My Projects</h2>
+    <section className={classes["section-container"]}>
+      <h2 id="projects" className={classes["section-heading-primary"]}>
+        My Projects
+      </h2>
       <div className={classes["section-project"]}>
         {projectItem.map((item) => (
           <div className={classes["section-project-item"]}>

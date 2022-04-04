@@ -2,9 +2,11 @@
 
 .header {
   margin-top: 0rem;
+  padding-bottom: 10rem;
   position: relative;
   height: 95vh;
   width: 100%;
+
   background-image: linear-gradient(
     to bottom,
     $color-background-blue,
@@ -14,9 +16,14 @@
   // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &-container {
+    // background-image: url("../images/city_dribbble.gif");
+    margin: auto;
+    // background-size: cover;
+    background-repeat: no-repeat;
     // height: 10rem;
     // background-color: blueviolet;
     padding-top: 15rem;
+    // height: 100%;
 
     h1 {
       font-family: "Sacramento", cursive;
@@ -221,8 +228,13 @@
 }
 
 .btn-container {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 10rem;
+  text-align: center;
+
+  // transform: translateX(50%);
+  // position: absolute;
+  // bottom: 20%;
+  // top: 70%;
+  // left: 50%;
+  // transform: translateX(-50%);
 }
