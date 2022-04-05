@@ -36,14 +36,14 @@ const AboutMe = () => {
         <h3 className={classes["section-heading-primary"]}>Hello!</h3>
         <div>
           <p className={classes["section-description"]}>
-            I'm an Architect and a Town Planner, recently discovered passion for
-            programming.
+            I'm an Architect and a Town Planner, turned into a Frontend Web
+            Developer
           </p>
           <p className={classes["section-description"]}>
             It all started during the lockdown in april 2021 when I developed a
-            passion for coding. I've learnt Python, HTML, CSS and Javascript
-            during this time. I plan to master all the skills that require to
-            become a full stack web developer!
+            passion for coding. I've learnt JavaScript, ReactJs, Sass, HTML and
+            Python during this time. Passionate about learning and development
+            and eager to tackle more complex problems.
           </p>
           <div className={classes["section-btn"]}>
             <Link to="projects" spy={true} smooth={true}>
