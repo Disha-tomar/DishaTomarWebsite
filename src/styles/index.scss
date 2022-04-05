@@ -1,5 +1,23 @@
+@import "../variables/Variables.scss";
 * {
   box-sizing: border-box;
   margin: 0;
-  font-size: 62.5%;
+  font-size: 62.5%; //1 rem = 10px
+
+  @include respond(tab-land) {
+    //1rem = 9px, 9/16 = 56.25%
+    font-size: 60%;
+  }
+  @include respond(tab-port) {
+    //1rem = 8px, 8/16 = 50%
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    font-size: 40%;
+  }
+
+  @include respond(big-desktop) {
+    //1rem = 12px, 12/16 = 75%
+    font-size: 80%;
+  }
 }
