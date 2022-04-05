@@ -54,6 +54,10 @@
       left: 50%;
       font-family: $font-montserrat;
       font-size: 4rem;
+
+      @include respond(phone) {
+        font-size: 6rem;
+      }
       //   background-color: blue;
 
       &--1 {
@@ -145,8 +149,9 @@
           height: 15%;
         }
         @include respond(phone) {
-          top: 15%;
-          height: 12%;
+          top: 12%;
+          right: 15%;
+          height: 15%;
         }
       }
 
@@ -163,8 +168,8 @@
           height: 20%;
         }
         @include respond(phone) {
-          height: 15%;
-          bottom: 35%;
+          height: 18%;
+          bottom: 30%;
         }
       }
     }

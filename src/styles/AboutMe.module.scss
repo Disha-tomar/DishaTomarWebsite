@@ -10,6 +10,10 @@
     margin: 10rem;
     padding: 4rem 0;
 
+    @include respond(phone) {
+      margin: 1rem;
+    }
+
     border-radius: 2rem;
 
     background-color: $color-background-pink;
@@ -51,6 +55,10 @@
     font-family: $font-montserrat;
     text-align: center;
     padding: 0rem 11rem;
+
+    @include respond(phone) {
+      padding: 0rem 3rem;
+    }
     line-height: 3rem;
     // padding-bottom: 6rem;
     // border-bottom: dotted;
@@ -78,11 +86,19 @@
     flex-wrap: wrap;
     // height: 20rem;
 
+    @include respond(phone) {
+      padding: 02rem 4rem;
+    }
+
     &-item {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+
+      @include respond(phone) {
+        padding: 1.5rem 1.5rem;
+      }
     }
 
     &-caption {
@@ -102,11 +118,19 @@
       &:hover {
         transform: scale(1.2);
       }
+
+      @include respond(phone) {
+        width: 5rem;
+      }
     }
 
     &-image-7 {
       width: 6rem;
       animation: halfRotate 1.5s;
+
+      @include respond(phone) {
+        width: 4rem;
+      }
     }
   }
 

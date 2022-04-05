@@ -4,14 +4,19 @@
   &-item {
     height: 35rem;
     display: flex;
-
+    flex-direction: row;
     margin-left: 15rem;
     margin-right: 15rem;
-
     margin-bottom: 9rem;
     border-radius: 2rem;
     overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    @include respond(phone) {
+      flex-direction: column;
+      height: fit-content;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
 
     // &:nth-of-type(2n) {
     //   color: yellow;
@@ -20,7 +25,7 @@
   }
 
   &-image {
-    height: 35rem;
+    width: 100%;
     padding: 1rem;
     transition: all 0.2s;
 
@@ -86,6 +91,11 @@
       padding-bottom: 2.5rem;
       font-size: 1.5rem;
       line-height: 2rem;
+
+      @include respond(phone) {
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+      }
     }
   }
 }

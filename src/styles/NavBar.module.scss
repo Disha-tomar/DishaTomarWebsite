@@ -10,12 +10,17 @@
   height: 8rem;
   z-index: 1;
   padding-left: 6rem;
+  border-bottom: solid rgb(238, 238, 238) 0.5px;
 
   &__links {
     // background-color: black;
 
     display: flex;
     justify-content: flex-start;
+
+    @include respond(phone) {
+      justify-content: space-between;
+    }
 
     // position: absolute;
     // float: left;
@@ -28,6 +33,10 @@
       cursor: pointer;
       font-family: $font-montserrat;
       font-size: 1.6rem;
+
+      @include respond(phone) {
+        font-size: 2.2rem;
+      }
       &:not(:last-child) {
         padding-right: 10rem;
       }

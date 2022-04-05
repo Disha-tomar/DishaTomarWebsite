@@ -137,7 +137,9 @@
         transition: all 0.2s ease;
 
         @include respond(phone) {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
+          padding-bottom: 1.5rem;
+          padding-top: 1.5rem;
         }
       }
 
@@ -158,11 +160,13 @@
         height: 12rem;
 
         @include respond(phone) {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
+          padding-bottom: 1.5rem;
+          padding-top: 1.5rem;
         }
       }
       &--btn {
-        align-self: flex-end;
+        align-self: center;
 
         padding-top: 2rem;
         button {
