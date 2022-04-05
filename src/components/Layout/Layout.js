@@ -16,7 +16,7 @@ import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Zoom from "@mui/material/Zoom";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 // import MainHeader from "./MainHeader";
 
 function ScrollTop(props) {
@@ -43,12 +43,18 @@ function ScrollTop(props) {
     }
   };
 
+  const matches = useMediaQuery("(max-width: 600px)");
+
   return (
     <Zoom in={trigger}>
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        sx={{
+          position: "fixed",
+          bottom: matches ? 30 : 16,
+          right: matches ? 40 : 16,
+        }}
       >
         {children}
       </Box>
@@ -66,6 +72,7 @@ ScrollTop.propTypes = {
 };
 
 export default function Layout(props) {
+  const matches = useMediaQuery("(max-width: 600px)");
   return (
     <React.Fragment>
       {/* <CssBaseline /> */}
@@ -148,7 +155,11 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
         </Box> */}
       </div>
       <ScrollTop {...props}>
-        <Fab color="secondary" size="medium" aria-label="scroll back to top">
+        <Fab
+          color="secondary"
+          size={matches ? "small" : "medium"}
+          aria-label="scroll back to top"
+        >
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

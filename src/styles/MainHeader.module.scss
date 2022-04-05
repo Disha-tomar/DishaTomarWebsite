@@ -13,6 +13,10 @@
     #ffecc8,
     $color-background-pink
   );
+
+  @include respond(phone) {
+    margin-top: -2rem;
+  }
   // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &-container {
@@ -24,6 +28,9 @@
     // background-color: blueviolet;
     padding-top: 15rem;
     // height: 100%;
+    @include respond(phone) {
+      padding-top: 25rem;
+    }
 
     h1 {
       font-family: "Sacramento", cursive;
@@ -35,6 +42,10 @@
 
       animation-fill-mode: backwards;
       //   color: $color-orange-dark;
+
+      @include respond(tab-port) {
+        font-size: 9rem;
+      }
     }
 
     &-heading--secondary {
@@ -129,16 +140,32 @@
         animation-fill-mode: backwards;
         animation-delay: 0.5s;
         animation-duration: 2s;
+
+        @include respond(tab-port) {
+          height: 15%;
+        }
+        @include respond(phone) {
+          top: 15%;
+          height: 12%;
+        }
       }
 
       &--2 {
         position: absolute;
         height: 25%;
         left: 13%;
-        bottom: 40%;
+        bottom: 50%;
         animation-name: MoveLeft;
         // animation-delay: 1s;
         animation-duration: 3.5s;
+
+        @include respond(tab-port) {
+          height: 20%;
+        }
+        @include respond(phone) {
+          height: 15%;
+          bottom: 35%;
+        }
       }
     }
 
@@ -230,6 +257,9 @@
 .btn-container {
   margin-top: 10rem;
   text-align: center;
+  @include respond(phone) {
+    margin-top: 20rem;
+  }
 
   // transform: translateX(50%);
   // position: absolute;
