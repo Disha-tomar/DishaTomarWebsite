@@ -65,6 +65,7 @@ const ProjectList = () => {
         {projectItem.map((item) => (
           <div className={classes["section-project-item"]}>
             <ProjectItem
+              key={item.id}
               id={item.id}
               technologies={item.technologies}
               title={item.title}
