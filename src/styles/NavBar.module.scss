@@ -23,7 +23,8 @@
     }
 
     @include respond(phone) {
-      justify-content: space-between;
+      justify-content: center;
+      padding-left: 0;
     }
 
     // position: absolute;
