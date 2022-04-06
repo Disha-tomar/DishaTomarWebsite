@@ -18,6 +18,10 @@
     display: flex;
     justify-content: flex-start;
 
+    @include respond(tab-port) {
+      justify-content: center;
+    }
+
     @include respond(phone) {
       justify-content: space-between;
     }
@@ -33,6 +37,12 @@
       cursor: pointer;
       font-family: $font-montserrat;
       font-size: 1.6rem;
+
+      @include respond(tab-port) {
+        font-size: 2rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
 
       @include respond(phone) {
         font-size: 2.2rem;

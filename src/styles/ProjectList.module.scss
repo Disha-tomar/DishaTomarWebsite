@@ -26,6 +26,10 @@
       color: $color-orange-light;
       transform: scale(1.2);
     }
+
+    @include respond(phone) {
+      font-size: 7rem;
+    }
   }
 
   &-project {
