@@ -25,6 +25,7 @@
     &:hover {
       color: $color-orange-light;
       transform: scale(1.2);
+      text-shadow: 0 0 2px #00b6a798;
     }
 
     @include respond(phone) {
