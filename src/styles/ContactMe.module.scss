@@ -67,6 +67,11 @@
           width: 7rem;
         }
 
+        &:hover {
+          animation-name: Jump;
+          animation-duration: 1s;
+        }
+
         // align-self: center;
       }
 
@@ -189,5 +194,20 @@
         }
       }
     }
+  }
+}
+
+@keyframes Jump {
+  0% {
+    transform: translate(0);
+  }
+
+  50% {
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0) scale(1);
   }
 }
