@@ -63,13 +63,18 @@
       &-bird {
         height: auto;
         width: 5rem;
+        transition: all 0.3s ease;
         @include respond(phone) {
           width: 7rem;
         }
 
         &:hover {
-          animation-name: Jump;
-          animation-duration: 1s;
+          transform: translateY(-3rem);
+
+          @include respond(phone) {
+            animation-name: Jump;
+            animation-duration: 1s;
+          }
         }
 
         // align-self: center;
