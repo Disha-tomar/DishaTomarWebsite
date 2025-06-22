@@ -19,12 +19,12 @@ const MainHeader = () => {
         </div>
         <h1>I'm Disha</h1>
         <div className={classes["header-container-heading--secondary"]}>
-          <h2 className={classes["header-container-heading--secondary--1"]}>
+          {/* <h2 className={classes["header-container-heading--secondary--1"]}>
             an architect.
           </h2>
           <h2 className={classes["header-container-heading--secondary--2"]}>
             an urban planner.
-          </h2>
+          </h2> */}
           <h2 className={classes["header-container-heading--secondary--3"]}>
             a software developer!
           </h2>

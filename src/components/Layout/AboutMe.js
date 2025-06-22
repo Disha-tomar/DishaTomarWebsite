@@ -14,10 +14,21 @@ import JavascriptIcon from "../../images/javascript.png";
 import SassIcon from "../../images/sass.svg";
 import GitIcon from "../../images/Git.svg.png";
 import GitHubIcon from "../../images/github.svg";
-import FirebaseIcon from "../../images/firebase.png";
-import PhotoshopIcon from "../../images/photoshop.png";
+import Angular from "../../images/angular.png";
+import Nextjs from "../../images/nextjs.png";
+import Nodejs from "../../images/nodejs.png";
+import Typescript from "../../images/typescript.png";
+import Python from "../../images/python.png";
+import Electron from "../../images/electron.png";
+import MongoDb from "../../images/mongodb.png";
+import Webpack from "../../images/webpack.png";
 
-import Hello from "../../images/hello.gif";
+import Npm from "../../images/npm.png";
+import Aws from "../../images/aws.png";
+import Css3 from "../../images/css3.png";
+import Html5 from "../../images/html5.png";
+import Handlebars from "../../images/handlebars.png";
+import Postman from "../../images/postman.png";
 
 const AboutMe = () => {
   useEffect(() => {
@@ -36,14 +47,10 @@ const AboutMe = () => {
         <h3 className={classes["section-heading-primary"]}>Hello!</h3>
         <div>
           <p className={classes["section-description"]}>
-            I'm an Architect and a Town Planner, turned into a Frontend Web
-            Developer
+            I'm a professional Software Developer with 3+ years of Experience, currently building scalable, user-centric applications at Korn Ferry.
           </p>
           <p className={classes["section-description"]}>
-            It all started during the lockdown in april 2021 when I developed a
-            passion for coding. I've learnt JavaScript, ReactJs, Sass, HTML and
-            Python during this time. Passionate about learning and development
-            and eager to tackle more complex problems.
+            Over the past few years, I've built responsive, accessible, and scalable web and desktop applications using JavaScript, React, Angular, Nextjs and more. I'm driven by clean design, thoughtful UX, and solving real-world problems through code.
           </p>
           <div className={classes["section-btn"]}>
             <Link to="projects" spy={true} smooth={true}>
@@ -62,6 +69,14 @@ const AboutMe = () => {
               alt="reactIcon"
             ></img>
           </div>
+            <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Angular</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Angular}
+              alt="Angular"
+            ></img>
+          </div>
           <div className={classes["section-skills-item"]}>
             <h5 className={classes["section-skills-caption"]}>Redux</h5>
             <img
@@ -72,11 +87,38 @@ const AboutMe = () => {
           </div>
 
           <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Nextjs</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Nextjs}
+              alt="Nextjs"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
             <h5 className={classes["section-skills-caption"]}>JavaScript</h5>
             <img
               className={classes["section-skills-image"]}
               src={JavascriptIcon}
-              alt="javascriptIcon"
+              alt="javascript-Icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>TypeScript</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Typescript}
+              alt="typescript-Icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Node.js</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Nodejs}
+              alt="nodejs-Icon"
             ></img>
           </div>
 
@@ -85,7 +127,43 @@ const AboutMe = () => {
             <img
               className={classes["section-skills-image"]}
               src={SassIcon}
-              alt="sassIcon"
+              alt="sass-Icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Python</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Python}
+              alt="python-icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Webpack</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Webpack}
+              alt="Webpack-ion"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>MongoDb</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={MongoDb}
+              alt="mongoDb-icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Electron</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Electron}
+              alt="electron-icon"
             ></img>
           </div>
 
@@ -108,22 +186,62 @@ const AboutMe = () => {
           </div>
 
           <div className={classes["section-skills-item"]}>
-            <h5 className={classes["section-skills-caption"]}>Firebase</h5>
+            <h5 className={classes["section-skills-caption"]}>HTML</h5>
             <img
-              className={classes["section-skills-image-7"]}
-              src={FirebaseIcon}
-              alt="firebaseIcon"
+              className={classes["section-skills-image"]}
+              src={Html5}
+              alt="html-icon"
             ></img>
           </div>
 
           <div className={classes["section-skills-item"]}>
-            <h5 className={classes["section-skills-caption"]}>Photoshop</h5>
+            <h5 className={classes["section-skills-caption"]}>CSS</h5>
             <img
               className={classes["section-skills-image"]}
-              src={PhotoshopIcon}
-              alt="photoshopIcon"
+              src={Css3}
+              alt="css-icon"
             ></img>
           </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>NPM</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Npm}
+              alt="npm-icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>AWS</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Aws}
+              alt="aws-icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Postman</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Postman}
+              alt="postman-icon"
+            ></img>
+          </div>
+
+          <div className={classes["section-skills-item"]}>
+            <h5 className={classes["section-skills-caption"]}>Handlebars</h5>
+            <img
+              className={classes["section-skills-image"]}
+              src={Handlebars}
+              alt="handlebars-icon"
+            ></img>
+          </div>
+
+
+
+
         </div>
       </div>
     </section>

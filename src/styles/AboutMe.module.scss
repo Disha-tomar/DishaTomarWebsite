@@ -81,7 +81,7 @@
     // padding-left: 10rem;
     // padding-right: 10rem;
     align-items: stretch;
-    justify-content: space-around;
+    justify-content: space-evenly;
     // background-color: yellow;
     flex-wrap: wrap;
     // height: 20rem;
@@ -93,22 +93,25 @@
     &-item {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 8px;
       align-items: center;
+      min-width: 90px;
+      padding: 1.5rem 1.5rem;
+      flex: 0 0 10%;
 
       @include respond(phone) {
-        padding: 1.5rem 1.5rem;
+        padding: 1.8rem 1.5rem;
       }
     }
 
     &-caption {
-      font-size: 1.2rem;
-      padding-bottom: 0.5rem;
+      font-size: 1.5rem;
+      padding-bottom: 0.2rem;
       font-family: $font-montserrat;
     }
 
     &-image {
-      width: 8rem;
+      width: 5rem;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
       filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5));
