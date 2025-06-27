@@ -19,6 +19,7 @@ const ProjectItem = (props) => {
           href={props.link}
           target="_blank"
           className={classes["project-detail-heading-tertiary"]}
+          rel="noreferrer"
         >
           {props.link}
         </a>
