@@ -33,9 +33,16 @@
   }
 
   &-image {
-    width: 100%;
+    // width: 100%;
     padding: 1rem;
     transition: all 0.2s;
+    max-width: 600px;
+    height: 100%;
+
+    
+    @include respond(phone) {
+      min-width: 200px;
+    }
 
     &:hover {
       transform: scale(1.08);

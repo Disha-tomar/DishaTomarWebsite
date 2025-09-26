@@ -1,8 +1,8 @@
-import { DirectionsSubway } from "@mui/icons-material";
 import ProjectItem from "./ProjectItem";
 import classes from "../../styles/ProjectList.module.scss";
 import MyDiaryImage from "../../images/mydiary.png";
 import NatoursImage from "../../images/natours.png";
+import CryptoAppImage from "../../images/cryto_app.png";
 
 import ReactIcon from "../../images/react.png";
 import ReduxIcon from "../../images/redux.svg";
@@ -13,11 +13,29 @@ import JavascriptIcon from "../../images/javascript.png";
 import SassIcon from "../../images/sass.svg";
 
 import JokesImage from "../../images/jokes.png";
+import TypeScriptIcon from "../../images/typescript.png";
+
+import TailwindIcon from "../../images/tailwind.svg";
+import EthereumIcon from "../../images/ethereum.svg";
 
 const ProjectList = () => {
   const projectItem = [
-    {
+      {
       id: 1,
+      title: "Crypto Wallet DApp",
+      link: "https://crypto-wallet-d-app.vercel.app/",
+      image: CryptoAppImage,
+      technologies: [
+        { pic: ReactIcon, caption: "React" },
+        { pic: TypeScriptIcon, caption: "TypeScript" },
+        { pic: TailwindIcon, caption: "Tailwind" },
+        { pic: EthereumIcon, caption: "Ethereum" },
+      ],
+      description:
+        "This is a React-based decentralized application (dApp) that enables users to connect their Ethereum wallet via MetaMask and interact with the blockchain directly from the browser. The app allows users to check the balance of any ERC20 token by entering its contract address, providing real-time feedback on valid or invalid tokens.",
+    },
+    {
+      id: 2,
       title: "My Diary",
       link: "https://my-diary-phi.vercel.app/",
       image: MyDiaryImage,
@@ -31,7 +49,7 @@ const ProjectList = () => {
     },
 
     {
-      id: 2,
+      id: 3,
       title: "Jokes App",
       link: "https://disha-tomar.github.io/jokes/",
       image: JokesImage,
@@ -44,7 +62,7 @@ const ProjectList = () => {
         'It is a simple Web application using vanilla JavaScript . It displays random jokes fetched from the API - "https://sv443.net/jokeapi/v2/". Users have an option to filter/blacklist jokes of certain categories as per choice.',
     },
     {
-      id: 3,
+      id: 4,
       title: "Natours - Tour booking Web App",
       link: "https://natours-ten-tan.vercel.app/",
       image: NatoursImage,
