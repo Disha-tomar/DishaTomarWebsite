@@ -3,6 +3,7 @@ import classes from "../../styles/ProjectList.module.scss";
 import MyDiaryImage from "../../images/mydiary.png";
 import NatoursImage from "../../images/natours.png";
 import CryptoAppImage from "../../images/cryto_app.png";
+import ResumeBuilderImage from "../../images/resume-builder.png";
 
 import ReactIcon from "../../images/react.png";
 import ReduxIcon from "../../images/redux.svg";
@@ -18,9 +19,26 @@ import TypeScriptIcon from "../../images/typescript.png";
 import TailwindIcon from "../../images/tailwind.svg";
 import EthereumIcon from "../../images/ethereum.svg";
 
+import SupabaseIcon from "../../images/supabase.svg";
+import GeminiIcon from "../../images/gemini.svg";
+
 const ProjectList = () => {
   const projectItem = [
-      {
+    {
+      id: 0,
+      title: "AI Resume Builder (FitMyResume)",
+      link: "https://resume-builder-v2-six.vercel.app",
+      image: ResumeBuilderImage,
+      technologies: [
+        { pic: ReactIcon, caption: "React" },
+        { pic: TypeScriptIcon, caption: "TypeScript" },
+        { pic: SupabaseIcon, caption: "Supabase" },
+        { pic: GeminiIcon, caption: "Gemini" },
+      ],
+      description:
+        "A full stack web app that tailors your resume to any job, without lying on it. From a single master profile it matches your real experience to a job description, suggests honest improvements, flags gaps rather than fabricating them, and exports an ATS friendly one page PDF in seconds.",
+    },
+    {
       id: 1,
       title: "Crypto Wallet DApp",
       link: "https://crypto-wallet-d-app.vercel.app/",

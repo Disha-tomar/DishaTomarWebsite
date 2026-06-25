@@ -70,6 +70,7 @@ const ContactMe = () => {
             alt="bird"
           />
           <h2>Disha Tomar</h2>
+          <h5>Dubai, UAE</h5>
           <h5>
             {/* <span>&#128231;</span> */}
             dishatomariitkgp@gmail.com

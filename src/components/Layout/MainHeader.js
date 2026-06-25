@@ -26,7 +26,7 @@ const MainHeader = () => {
             an urban planner.
           </h2> */}
           <h2 className={classes["header-container-heading--secondary--3"]}>
-            a software developer!
+            an AI & Full-Stack Engineer!
           </h2>
         </div>
         <div className={classes["header-container-image"]}>
