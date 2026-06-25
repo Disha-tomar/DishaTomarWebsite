@@ -3,7 +3,7 @@ import classes from "../../styles/ProjectItem.module.scss";
 const ProjectItem = (props) => {
   return (
     <div className={classes["project-item"]}>
-      <a href={props.link} target="-blank">
+      <a href={props.link} target="_blank" rel="noreferrer">
         <img
           className={classes["project-image"]}
           src={props.image}

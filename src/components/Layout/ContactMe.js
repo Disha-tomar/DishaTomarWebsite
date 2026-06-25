@@ -1,7 +1,5 @@
 import { useState } from "react";
 import classes from "../../styles/ContactMe.module.scss";
-import Button from "../UI/Button";
-// import { FormEvent } from "react";
 import FaceBookIcon from "../../images/Facebook_icon.png";
 
 import LinkedinIcon from "../../images/linkedin.png";
@@ -79,13 +77,22 @@ const ContactMe = () => {
             <a
               href="https://www.linkedin.com/in/disha-tomar-714541100/"
               target="_blank"
+              rel="noreferrer"
             >
               <img src={LinkedinIcon} alt="icon" />
             </a>
-            <a href="https://github.com/Disha-tomar" target="_blank">
+            <a
+              href="https://github.com/Disha-tomar"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={GithubIcon} alt="icon" />
             </a>
-            <a href="https://www.facebook.com/disha.tomar" target="_blank">
+            <a
+              href="https://www.facebook.com/disha.tomar"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={FaceBookIcon} alt="icon" />
             </a>
           </div>
