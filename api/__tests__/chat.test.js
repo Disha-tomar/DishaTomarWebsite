@@ -56,7 +56,10 @@ test("runChat executes a tool call, then streams the final answer", async () => 
 
 test("runChat writes and returns a fallback when no content is produced", async () => {
   // Every round only ever asks for a tool call and never streams content.
-  mockStreamChat.mockResolvedValue(
+  // Use mockImplementation so each call gets a FRESH generator — otherwise a
+  // single exhausted one-shot generator would break the loop after round 1
+  // instead of genuinely exercising MAX_ROUNDS exhaustion.
+  mockStreamChat.mockImplementation(() =>
     stream([
       { choices: [{ delta: { tool_calls: [{ index: 0, id: "t1", function: { name: "getProjects", arguments: "" } }] } }] },
       { choices: [{ delta: {}, finish_reason: "tool_calls" }] },
