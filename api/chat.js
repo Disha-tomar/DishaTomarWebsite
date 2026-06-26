@@ -71,9 +71,11 @@ async function runChat({ sessionId, messages, write, meta = {} }) {
     break;
   }
 
-  if (finalText) {
-    await saveMessage({ sessionId, role: "assistant", content: finalText, meta });
+  if (!finalText) {
+    finalText = "Sorry, I couldn't quite answer that. Could you rephrase or ask about Disha's projects, experience, or skills?";
+    write(finalText);
   }
+  await saveMessage({ sessionId, role: "assistant", content: finalText, meta });
   return finalText;
 }
 
