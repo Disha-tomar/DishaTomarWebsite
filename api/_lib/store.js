@@ -14,7 +14,7 @@ function getDb() {
 async function saveMessage({ sessionId, role, content, meta = {} }) {
   try {
     const db = getDb();
-    await db.from("conversations").upsert(
+    const { error: upsertError } = await db.from("conversations").upsert(
       {
         session_id: sessionId,
         user_agent: meta.userAgent || null,
@@ -22,6 +22,7 @@ async function saveMessage({ sessionId, role, content, meta = {} }) {
       },
       { onConflict: "session_id", ignoreDuplicates: false }
     );
+    if (upsertError) throw new Error(upsertError.message);
     const { error } = await db
       .from("messages")
       .insert({ session_id: sessionId, role, content });
