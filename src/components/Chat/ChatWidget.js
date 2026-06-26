@@ -16,7 +16,7 @@ const ChatWidget = () => {
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-  }, [messages.length]);
+  });
 
   useEffect(() => {
     const onHide = () => {
