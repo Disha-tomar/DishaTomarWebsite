@@ -1,4 +1,4 @@
-const { projects, experience, skills, contact } = require("./portfolio");
+const { projects, experience, skills, contact, personal } = require("./portfolio");
 
 const toolDefinitions = [
   {
@@ -29,7 +29,15 @@ const toolDefinitions = [
     type: "function",
     function: {
       name: "getContact",
-      description: "Get Disha's contact details: email, location, LinkedIn, and GitHub.",
+      description: "Get Disha's contact details: email, phone, location, LinkedIn, and GitHub.",
+      parameters: { type: "object", properties: {} },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getPersonal",
+      description: "Get personal details about Disha beyond her work: her background and career story, education, fun facts, hobbies, and interests.",
       parameters: { type: "object", properties: {} },
     },
   },
@@ -40,6 +48,7 @@ const handlers = {
   getExperience: () => experience,
   getSkills: () => skills,
   getContact: () => contact,
+  getPersonal: () => personal,
 };
 
 function executeTool(name) {
