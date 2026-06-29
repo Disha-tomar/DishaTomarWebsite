@@ -29,6 +29,10 @@
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  // The site sets html font-size to 62.5% (and lower at breakpoints), so the
+  // widget pins its own px sizes to stay readable regardless of the page base.
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .header {
@@ -36,6 +40,7 @@
   background: #1e1e2f;
   color: #fff;
   font-weight: 600;
+  font-size: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +67,8 @@
   max-width: 85%;
   padding: 8px 12px;
   border-radius: 12px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
 }
