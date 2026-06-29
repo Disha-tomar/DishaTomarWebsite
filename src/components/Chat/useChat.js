@@ -27,19 +27,28 @@ export function useChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sessionId: sessionIdRef.current, messages: history }),
       });
-      if (!res.ok || !res.body) throw new Error("Request failed");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let assistant = "";
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        assistant += decoder.decode(value, { stream: true });
-        setMessages([...history, { role: "assistant", content: assistant }]);
+      if (res.body && typeof res.body.getReader === "function") {
+        // Streaming path (modern browsers): show tokens as they arrive.
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let assistant = "";
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          assistant += decoder.decode(value, { stream: true });
+          setMessages([...history, { role: "assistant", content: assistant }]);
+        }
+      } else {
+        // Fallback for browsers without fetch response streaming (e.g. iOS
+        // Safari < 17.4): read the whole reply at once. No live typing, but it works.
+        const full = await res.text();
+        setMessages([...history, { role: "assistant", content: full }]);
       }
     } catch (err) {
+      console.error("[chat] send failed:", err);
       setMessages([
         ...history,
         { role: "assistant", content: "Sorry, I had trouble answering. Please try again." },
