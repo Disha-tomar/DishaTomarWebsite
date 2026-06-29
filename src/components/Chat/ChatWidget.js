@@ -7,6 +7,36 @@ const GREETING = {
   content: "Hi! I'm Disha's assistant. Ask me about her projects, experience, skills, or how to reach her.",
 };
 
+// Matches http(s) URLs and bare email addresses (capturing group so split keeps them).
+const LINK_RE = /(https?:\/\/[^\s]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
+const TRAILING_PUNCT = /[.,;:!?)\]}'"]+$/;
+
+// Turn plain text into React nodes with clickable links. Only http(s) URLs and
+// emails (mailto:) become anchors — no other schemes — and anchors are built as
+// React elements, so there is no HTML injection surface.
+function linkify(text) {
+  if (!text) return text;
+  return text.split(LINK_RE).map((part, i) => {
+    if (!part) return null;
+    if (/^https?:\/\//.test(part)) {
+      const trail = (part.match(TRAILING_PUNCT) || [""])[0];
+      const url = trail ? part.slice(0, -trail.length) : part;
+      return (
+        <span key={i}>
+          <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+          {trail}
+        </span>
+      );
+    }
+    if (/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(part)) {
+      return (
+        <a key={i} href={`mailto:${part}`}>{part}</a>
+      );
+    }
+    return part;
+  });
+}
+
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const { messages, input, setInput, send, isStreaming, endSession } = useChat();
@@ -71,7 +101,7 @@ const ChatWidget = () => {
                 </span>
               ) : (
                 <>
-                  {m.content}
+                  {linkify(m.content)}
                   {streamingThis && <span className={classes.cursor} aria-hidden="true" />}
                 </>
               )}
