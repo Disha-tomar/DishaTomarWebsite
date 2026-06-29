@@ -7,11 +7,19 @@ const GREETING = {
   content: "Hi! I'm Disha's assistant. Ask me about her projects, experience, skills, or how to reach her.",
 };
 
+// Strips <function=...>...</function> blocks the model occasionally leaks
+// into the content stream alongside its structured tool_calls.
+function sanitize(text) {
+  if (!text) return text;
+  return text.replace(/<function=[^>]*>[\s\S]*?<\/function>/g, "");
+}
+
 // Tokenizes text for clickable links: Markdown links [label](url), bare http(s)
 // URLs, and emails. Anchors are built as React elements (no HTML injection) and
-// limited to http(s)/mailto schemes.
+// limited to http(s)/mailto schemes. Non-http markdown links (e.g. [label](#))
+// render the label as plain text — no broken anchor.
 const TOKEN_RE =
-  /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s]+)|([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
+  /\[([^\]]+)\]\(([^)]*)\)|(https?:\/\/[^\s]+)|([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
 const TRAILING_PUNCT = /[.,;:!?)\]}'"]+$/;
 
 // Short, human-friendly label for a bare URL (fallback when the model didn't
@@ -42,10 +50,16 @@ function linkify(text) {
   while ((m = TOKEN_RE.exec(text)) !== null) {
     if (m.index > last) nodes.push(text.slice(last, m.index));
     const [match, mdLabel, mdUrl, rawUrl, email] = m;
-    if (mdUrl) {
-      nodes.push(
-        <a key={key++} href={mdUrl} target="_blank" rel="noopener noreferrer">{mdLabel}</a>
-      );
+    if (mdLabel !== undefined) {
+      // Markdown link: only make it clickable for absolute http(s) URLs
+      if (/^https?:\/\//i.test(mdUrl)) {
+        nodes.push(
+          <a key={key++} href={mdUrl} target="_blank" rel="noopener noreferrer">{mdLabel}</a>
+        );
+      } else {
+        // Relative / anchor / placeholder URL — just show the label as text
+        nodes.push(mdLabel);
+      }
     } else if (rawUrl) {
       const trail = (rawUrl.match(TRAILING_PUNCT) || [""])[0];
       const url = trail ? rawUrl.slice(0, -trail.length) : rawUrl;
@@ -67,7 +81,32 @@ const ChatWidget = () => {
   const { messages, input, setInput, send, isStreaming, endSession } = useChat();
   const scrollRef = useRef(null);
 
+  // Typewriter state: how many characters of the last assistant message to display
+  const [typedLen, setTypedLen] = useState(0);
+  const prevIsStreamingRef = useRef(false);
+
   const shown = messages.length ? messages : [GREETING];
+
+  const lastMsg = shown[shown.length - 1];
+  const lastIsAssistant = lastMsg?.role === "assistant";
+  const lastContent = lastIsAssistant ? lastMsg.content : "";
+
+  // Reset the typewriter counter each time a new streaming response begins
+  useEffect(() => {
+    if (isStreaming && !prevIsStreamingRef.current) {
+      setTypedLen(0);
+    }
+    prevIsStreamingRef.current = isStreaming;
+  }, [isStreaming]);
+
+  // Advance the typewriter 3 characters every 15 ms (~200 chars/sec)
+  useEffect(() => {
+    if (!lastIsAssistant || typedLen >= lastContent.length) return;
+    const id = setTimeout(() => {
+      setTypedLen((n) => Math.min(n + 3, lastContent.length));
+    }, 15);
+    return () => clearTimeout(id);
+  }, [typedLen, lastContent, lastIsAssistant]);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -115,10 +154,18 @@ const ChatWidget = () => {
       <div className={classes.messages} ref={scrollRef}>
         {shown.map((m, i) => {
           const isAssistant = m.role !== "user";
-          const streamingThis = isStreaming && isAssistant && i === shown.length - 1;
+          const isLastMsg = i === shown.length - 1;
+          const streamingThis = isStreaming && isAssistant && isLastMsg;
+
+          // Apply typewriter to the last assistant message only
+          const displayContent =
+            isLastMsg && isAssistant ? lastContent.slice(0, typedLen) : m.content;
+          const isTypingThis = isLastMsg && isAssistant && typedLen < lastContent.length;
+          const showCursor = streamingThis || isTypingThis;
+
           return (
             <div key={i} className={`${classes.msg} ${m.role === "user" ? classes.user : classes.assistant}`}>
-              {streamingThis && !m.content ? (
+              {streamingThis && !m.content && typedLen === 0 ? (
                 <span className={classes.thinking} aria-label="Assistant is thinking">
                   <span></span>
                   <span></span>
@@ -126,8 +173,8 @@ const ChatWidget = () => {
                 </span>
               ) : (
                 <>
-                  {linkify(m.content)}
-                  {streamingThis && <span className={classes.cursor} aria-hidden="true" />}
+                  {linkify(sanitize(displayContent))}
+                  {showCursor && <span className={classes.cursor} aria-hidden="true" />}
                 </>
               )}
             </div>

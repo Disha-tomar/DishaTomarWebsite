@@ -23,6 +23,7 @@ async function runChat({ sessionId, messages, write, meta = {} }) {
     const stream = await streamChat({ messages: convo, tools: toolDefinitions });
 
     let content = "";
+    const chunks = []; // buffer — only flushed if this round is the final answer
     const toolCalls = []; // accumulated by index
     let finishReason = null;
 
@@ -33,7 +34,10 @@ async function runChat({ sessionId, messages, write, meta = {} }) {
 
       if (delta.content) {
         content += delta.content;
-        write(delta.content);
+        // Buffer instead of writing immediately — a tool-calling round may emit
+        // a partial sentence before its tool_calls, which would otherwise land
+        // in the bubble alongside the real answer from the next round.
+        chunks.push(delta.content);
       }
 
       if (delta.tool_calls) {
@@ -52,7 +56,7 @@ async function runChat({ sessionId, messages, write, meta = {} }) {
     }
 
     if (finishReason === "tool_calls" && toolCalls.length) {
-      // Echo the assistant tool-call message, then append each tool result.
+      // Tool-calling round — discard buffered content, execute tools, loop.
       convo.push({ role: "assistant", content: content || null, tool_calls: toolCalls });
       for (const call of toolCalls) {
         let result;
@@ -63,10 +67,11 @@ async function runChat({ sessionId, messages, write, meta = {} }) {
         }
         convo.push({ role: "tool", tool_call_id: call.id, content: result });
       }
-      continue; // loop for the model's next turn
+      continue;
     }
 
-    // No tool calls — this round produced the final answer.
+    // Final answer round — flush the buffered chunks to the client.
+    for (const c of chunks) write(c);
     finalText = content;
     break;
   }

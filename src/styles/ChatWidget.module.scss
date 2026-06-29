@@ -7,10 +7,13 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: #1e1e2f;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
   color: #fff;
   font-size: 24px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 8px 24px rgba(231, 123, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   z-index: 1000;
 }
 
@@ -24,34 +27,56 @@
   max-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: rgba(255, 250, 246, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
   border-radius: 14px;
+  border: 1px solid rgba(255, 220, 170, 0.45);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 20px 60px rgba(80, 30, 0, 0.18),
+    0 6px 20px rgba(231, 123, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   z-index: 1000;
   // The site sets html font-size to 62.5% (and lower at breakpoints), so the
   // widget pins its own px sizes to stay readable regardless of the page base.
   font-size: 14px;
   line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header {
   padding: 14px 16px;
-  background: #1e1e2f;
-  color: #fff;
-  font-weight: 600;
-  font-size: 20px;
+  background: linear-gradient(130deg, rgba(225, 247, 255, 0.85) 0%, rgba(255, 232, 200, 0.85) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(231, 123, 0, 0.18);
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  span {
+    font-family: 'Sacramento', cursive;
+    font-weight: 600;
+    font-size: 28px;
+    color: #7c3500;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  }
 }
 
 .close {
-  background: none;
+  background: rgba(231, 123, 0, 0.1);
   border: none;
-  color: #fff;
+  color: #e77b00;
   font-size: 18px;
   cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .messages {
@@ -61,6 +86,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: transparent;
 }
 
 .msg {
@@ -92,7 +118,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: currentColor;
+    background: #e77b00;
     opacity: 0.4;
     animation: chatThinking 1.2s infinite ease-in-out both;
   }
@@ -149,39 +175,55 @@
 
 .user {
   align-self: flex-end;
-  background: #1e1e2f;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(231, 123, 0, 0.35);
 }
 
 .assistant {
   align-self: flex-start;
-  background: #f0f0f4;
-  color: #1e1e2f;
+  background: rgba(255, 240, 220, 0.75);
+  color: #3a2000;
+  border: 1px solid rgba(231, 123, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(80, 30, 0, 0.06);
 }
 
 .inputRow {
   display: flex;
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(231, 123, 0, 0.12);
   padding: 8px;
   gap: 8px;
+  background: rgba(255, 250, 246, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .input {
   flex: 1;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(231, 123, 0, 0.25);
   border-radius: 10px;
   padding: 8px 10px;
   font-size: 14px;
   resize: none;
+  background: rgba(255, 245, 234, 0.8);
+  color: #3a2000;
+
+  &::placeholder {
+    color: #c09060;
+  }
 }
 
 .send {
   border: none;
   border-radius: 10px;
   padding: 0 14px;
-  background: #1e1e2f;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
   color: #fff;
   cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(231, 123, 0, 0.4);
 }
 
 .send:disabled {
