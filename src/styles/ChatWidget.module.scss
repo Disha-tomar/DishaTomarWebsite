@@ -74,9 +74,11 @@
 
   a {
     color: inherit;
+    font-size: inherit;
+    font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 2px;
-    word-break: break-all; // let long URLs wrap inside the bubble
+    overflow-wrap: anywhere; // wrap gracefully if a long link slips through
   }
 }
 

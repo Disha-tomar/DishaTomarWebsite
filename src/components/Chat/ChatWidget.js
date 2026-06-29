@@ -7,34 +7,59 @@ const GREETING = {
   content: "Hi! I'm Disha's assistant. Ask me about her projects, experience, skills, or how to reach her.",
 };
 
-// Matches http(s) URLs and bare email addresses (capturing group so split keeps them).
-const LINK_RE = /(https?:\/\/[^\s]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
+// Tokenizes text for clickable links: Markdown links [label](url), bare http(s)
+// URLs, and emails. Anchors are built as React elements (no HTML injection) and
+// limited to http(s)/mailto schemes.
+const TOKEN_RE =
+  /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s]+)|([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
 const TRAILING_PUNCT = /[.,;:!?)\]}'"]+$/;
 
-// Turn plain text into React nodes with clickable links. Only http(s) URLs and
-// emails (mailto:) become anchors — no other schemes — and anchors are built as
-// React elements, so there is no HTML injection surface.
+// Short, human-friendly label for a bare URL (fallback when the model didn't
+// supply a Markdown label), so long raw URLs don't clutter the bubble.
+const KNOWN_HOSTS = {
+  "linkedin.com": "LinkedIn",
+  "github.com": "GitHub",
+  "twitter.com": "X",
+  "x.com": "X",
+  "facebook.com": "Facebook",
+};
+function labelForUrl(url) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    return KNOWN_HOSTS[host] || host;
+  } catch (_) {
+    return url;
+  }
+}
+
 function linkify(text) {
   if (!text) return text;
-  return text.split(LINK_RE).map((part, i) => {
-    if (!part) return null;
-    if (/^https?:\/\//.test(part)) {
-      const trail = (part.match(TRAILING_PUNCT) || [""])[0];
-      const url = trail ? part.slice(0, -trail.length) : part;
-      return (
-        <span key={i}>
-          <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
-          {trail}
-        </span>
+  const nodes = [];
+  let last = 0;
+  let key = 0;
+  let m;
+  TOKEN_RE.lastIndex = 0;
+  while ((m = TOKEN_RE.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    const [match, mdLabel, mdUrl, rawUrl, email] = m;
+    if (mdUrl) {
+      nodes.push(
+        <a key={key++} href={mdUrl} target="_blank" rel="noopener noreferrer">{mdLabel}</a>
       );
-    }
-    if (/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(part)) {
-      return (
-        <a key={i} href={`mailto:${part}`}>{part}</a>
+    } else if (rawUrl) {
+      const trail = (rawUrl.match(TRAILING_PUNCT) || [""])[0];
+      const url = trail ? rawUrl.slice(0, -trail.length) : rawUrl;
+      nodes.push(
+        <a key={key++} href={url} target="_blank" rel="noopener noreferrer">{labelForUrl(url)}</a>
       );
+      if (trail) nodes.push(trail);
+    } else if (email) {
+      nodes.push(<a key={key++} href={`mailto:${email}`}>{email}</a>);
     }
-    return part;
-  });
+    last = m.index + match.length;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes;
 }
 
 const ChatWidget = () => {
