@@ -21,6 +21,7 @@ async function streamChat({ messages, tools }) {
     tools,
     tool_choice: "auto",
     stream: true,
+    max_tokens: 1024,
   });
 }
 

@@ -14,6 +14,6 @@ test("streamChat calls the client with streaming + tools and returns the stream"
 
   expect(result).toBe("FAKE_STREAM");
   expect(mockCreate).toHaveBeenCalledWith(
-    expect.objectContaining({ model: MODEL, messages, tools, stream: true, tool_choice: "auto" })
+    expect.objectContaining({ model: MODEL, messages, tools, stream: true, tool_choice: "auto", max_tokens: 1024 })
   );
 });
