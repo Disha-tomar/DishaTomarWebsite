@@ -21,3 +21,13 @@
     font-size: 80%;
   }
 }
+
+// Prevent horizontal overflow on mobile: decorative/centered hero elements can
+// extend past the viewport on narrow screens, creating a sideways scroll and a
+// white gutter on the right. Clip it at the root so the page never scrolls
+// horizontally (vertical scrolling is unaffected).
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}

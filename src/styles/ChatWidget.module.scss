@@ -1,0 +1,232 @@
+.launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
+  color: #fff;
+  font-size: 24px;
+  box-shadow:
+    0 8px 24px rgba(231, 123, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+}
+
+.panel {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  height: 460px;
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 250, 246, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 220, 170, 0.45);
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(80, 30, 0, 0.18),
+    0 6px 20px rgba(231, 123, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  z-index: 1000;
+  // The site sets html font-size to 62.5% (and lower at breakpoints), so the
+  // widget pins its own px sizes to stay readable regardless of the page base.
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  padding: 14px 16px;
+  background: linear-gradient(130deg, rgba(225, 247, 255, 0.85) 0%, rgba(255, 232, 200, 0.85) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(231, 123, 0, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-family: 'Sacramento', cursive;
+    font-weight: 600;
+    font-size: 28px;
+    color: #7c3500;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.close {
+  background: rgba(231, 123, 0, 0.1);
+  border: none;
+  color: #e77b00;
+  font-size: 18px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow-wrap: anywhere; // wrap gracefully if a long link slips through
+  }
+}
+
+.thinking {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 0;
+
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e77b00;
+    opacity: 0.4;
+    animation: chatThinking 1.2s infinite ease-in-out both;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  span:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+}
+
+@keyframes chatThinking {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: chatCursor 1s steps(1) infinite;
+}
+
+@keyframes chatCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thinking span,
+  .cursor {
+    animation: none;
+  }
+}
+
+.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(231, 123, 0, 0.35);
+}
+
+.assistant {
+  align-self: flex-start;
+  background: rgba(255, 240, 220, 0.75);
+  color: #3a2000;
+  border: 1px solid rgba(231, 123, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(80, 30, 0, 0.06);
+}
+
+.inputRow {
+  display: flex;
+  border-top: 1px solid rgba(231, 123, 0, 0.12);
+  padding: 8px;
+  gap: 8px;
+  background: rgba(255, 250, 246, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.input {
+  flex: 1;
+  border: 1px solid rgba(231, 123, 0, 0.25);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  resize: none;
+  background: rgba(255, 245, 234, 0.8);
+  color: #3a2000;
+
+  &::placeholder {
+    color: #c09060;
+  }
+}
+
+.send {
+  border: none;
+  border-radius: 10px;
+  padding: 0 14px;
+  background: linear-gradient(135deg, #ffa64c 0%, #e77b00 100%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(231, 123, 0, 0.4);
+}
+
+.send:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
