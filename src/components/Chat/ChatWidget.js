@@ -58,11 +58,26 @@ const ChatWidget = () => {
       </div>
 
       <div className={classes.messages} ref={scrollRef}>
-        {shown.map((m, i) => (
-          <div key={i} className={`${classes.msg} ${m.role === "user" ? classes.user : classes.assistant}`}>
-            {m.content || (isStreaming ? "…" : "")}
-          </div>
-        ))}
+        {shown.map((m, i) => {
+          const isAssistant = m.role !== "user";
+          const streamingThis = isStreaming && isAssistant && i === shown.length - 1;
+          return (
+            <div key={i} className={`${classes.msg} ${m.role === "user" ? classes.user : classes.assistant}`}>
+              {streamingThis && !m.content ? (
+                <span className={classes.thinking} aria-label="Assistant is thinking">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              ) : (
+                <>
+                  {m.content}
+                  {streamingThis && <span className={classes.cursor} aria-hidden="true" />}
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <form className={classes.inputRow} onSubmit={onSubmit}>
