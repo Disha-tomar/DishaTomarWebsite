@@ -1,7 +1,7 @@
 const OpenAI = require("openai");
 
 // The ONLY file that knows the provider. Swap provider by editing here.
-const MODEL = "llama-3.3-70b-versatile";
+const MODEL = "openai/gpt-oss-120b";
 
 let client;
 function getClient() {
